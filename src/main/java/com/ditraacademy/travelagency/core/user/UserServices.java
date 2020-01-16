@@ -1,6 +1,7 @@
 package com.ditraacademy.travelagency.core.user;
 
 import com.ditraacademy.travelagency.utils.ErrorResponseModel;
+import com.ditraacademy.travelagency.utils.Mailer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,8 @@ public class UserServices {
 
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    Mailer mailer;
 
     public ResponseEntity<?> createUser(User user) {
 
@@ -26,6 +29,10 @@ public class UserServices {
         if(user.getAge() <= 0)
             return new ResponseEntity<>(new ErrorResponseModel("Wrong user age"), HttpStatus.BAD_REQUEST);
 
+        String destination = user.getEmail();
+      String subject = "Welcome";
+      String  text = "Rim HiBA";
+      mailer.sendEmail(destination, subject, text);
         User databaseUser = userRepository.save(user);
 
         return new ResponseEntity<>(databaseUser, HttpStatus.OK);

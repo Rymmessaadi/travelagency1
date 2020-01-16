@@ -21,7 +21,7 @@ public class Destination {
     private String nom;
     private String description;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "destination")
+    @JsonIgnore//jsonIgnore sur l'attribut list voyage éliminé l'infini..sue chaque relation bidirectionnel on ajout jsonIgnore
+    @OneToMany(mappedBy = "destination")//bech ma ndhay3ch jpa fi assemi "nsaami nafss l'essm eli samit bih"
     private List<Voyage> voyages;
 }
