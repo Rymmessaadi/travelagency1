@@ -86,9 +86,10 @@ public class VoyageServices {
         return   new ResponseEntity<>(HttpStatus.OK)  ;
     }
 
-    public ResponseEntity<?> getAllVoyagesByMaxPrice(double min, double max) {
-
-        List<Voyage> voyages = voyageRepository.findAllByPrixIsBetweenAndNbPlacesIsNot(min, max, 0);
-        return new ResponseEntity<>(voyages, HttpStatus.OK);
+    public ResponseEntity<?> getAllVoyagesPrixMax(double prix){
+        List<Voyage> voyages = voyageRepository.findAllByPrixIsLessThanEqualAndNbPlacesNot(prix,0);
+        return new  ResponseEntity<>(voyages ,HttpStatus.OK) ;
     }
+
+
 }

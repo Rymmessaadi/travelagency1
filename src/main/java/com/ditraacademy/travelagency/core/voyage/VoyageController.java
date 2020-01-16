@@ -34,10 +34,10 @@ public class VoyageController {
     public ResponseEntity<?> UpdateVoyage (@PathVariable int id, @RequestBody Voyage voyage) {
         return voyageServices.updateVoyage (id , voyage);
     }
-
-    @GetMapping("/voyages/byPrice")
-    public ResponseEntity<?> getAllVoyagesByMaxPrice (@RequestParam double min, @RequestParam double max){
-        return voyageServices.getAllVoyagesByMaxPrice(min, max);
+    @GetMapping("/voyage/prix")
+    public ResponseEntity<?> getAllVoyagesPrixMax(@RequestParam double prix){
+        return voyageServices.getAllVoyagesPrixMax(prix);
     }
+
 
 }

@@ -19,8 +19,6 @@ public class Type {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String description;
-    @JsonIgnore
-    @OneToMany(mappedBy = "chambre")
-    private List<Chambre> chambres;
+
 
 }

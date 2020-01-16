@@ -8,10 +8,6 @@ import java.util.List;
 
 public interface VoyageRepository extends JpaRepository<Voyage, Integer> {
 
-    List<Voyage> findAllByPrixIsLessThanEqual(double maxPrice);
-
-    List<Voyage> findAllByPrixIsBetweenAndNbPlacesIsNot(double min, double max, int nbPlaces);
-
-    @Query(value = "select * from voyage v where v.nb_places != ?1", nativeQuery = true)
-    List<Voyage> findAllByQuery(@Param("nb") int nb);
+    List<Voyage> findAllByPrixIsLessThanEqual(double prix );
+    List<Voyage> findAllByPrixIsLessThanEqualAndNbPlacesNot(double prix ,int nbPlaces);
 }
